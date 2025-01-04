@@ -1,0 +1,6 @@
+env\Scripts\activate
+
+
+pip install ipython
+ipython
+python scripts/data_distribution.py
