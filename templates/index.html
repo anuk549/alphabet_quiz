@@ -1,18 +1,102 @@
-{% extends "base.html" %}
-{% block content %}
-
-  <div class="main-container">
-    <h1 class="title">alphabet quiz</h1>
-    <div>
-      <div class="box">
-        <a class="button is-info" href="/practice">practice</a>
-        <p>practice writing the alphabet</p>
-      </div>
-      <div class="box">
-        <a class="button is-info" href="/add-data">add data</a>
-        <p>improve the model by adding data</p>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alphabet Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"> <!-- Add this link to include the stylesheet -->
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Alphabet Learning</h1>
+    <p class="subtitle">Let’s have fun learning to write letters!</p>
+    <div class="button-container">
+      <a href="/practice" class="button">🎨 Practice Writing</a>
+      <a href="/add-data" class="button">📚 Add More Letters</a>
     </div>
   </div>
+</body>
+</html>
 
-{% endblock %}
+<style>
+  body {
+  margin: 0;
+  font-family: 'Baloo 2', cursive;
+  background: linear-gradient(135deg, #FFEE93, #FFA45B);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 600px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #FF6F61;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #FF6F61, #FFAB76);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+</style>

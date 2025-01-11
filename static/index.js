@@ -69,7 +69,7 @@ function addClick(x, y, dragging) {
 }
 
 function clearCanvas() {
-  context.clearRect(0, 0, 200, 200)
+  context.clearRect(0, 0, 350, 350)
 }
 
 function resetCanvas() {
