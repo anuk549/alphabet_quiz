@@ -1,38 +1,171 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <div class="main-container">
-    <div>
-      <a href="/" class="button is-text">&lt; return to main menu</a>
-    </div>
-    <h1 class="title">practice</h1>
-    <div>
-      <canvas id="canvas" width="350" height="350"></canvas>
-    </div>
-    <div style="padding: 1rem;">
-      {% if correct %}
-        {% if correct == 'yes' %}
-          <p style="font-size: 0.75rem;">correct! next question:</p>
-        {% else %}
-          <p style="font-size: 0.75rem;">incorrect! next question:</p>
-        {% endif %}
-      {% endif %}
-      <p style="margin-top: 0.5rem;">Write an uppercase "{{letter.lower()}}"</p>
-    </div>
-    <div>
-      <form id="practice-form" action="practice" method="POST">
-        <input id="pixels" name="pixels" type="hidden" />
-        <input id="letter" name="letter" type="hidden" value="{{letter}}" />
-        <button type="button" class="button is-success" onclick="practiceAction()">check my answer</button>
-        <button type="button" class="button is-info" onclick="resetCanvas()">clear</button>
-      </form>
-    </div>
+<div class="main-container">
+  <header class="header">
+    <a href="/" class="back-button">&lt; Return to Main Menu</a>
+    <h1 class="game-title">Practice Game</h1>
+  </header>
+
+  <div class="canvas-container">
+    <canvas id="canvas" width="200" height="200"></canvas>
   </div>
 
-  <script>
-    $(document).ready(function() {
-      startCanvas()
-    })
-  </script>
+  <div class="feedback-container">
+    {% if correct %}
+      <p class="feedback-message {{ 'correct' if correct == 'yes' else 'incorrect' }}">
+        {{ 'Correct! Next question:' if correct == 'yes' else 'Incorrect! Next question:' }}
+      </p>
+    {% endif %}
+    <p class="instruction">Write an uppercase "{{ letter.lower() }}"</p>
+  </div>
+
+  <form id="practice-form" action="practice" method="POST" class="form-container">
+    <input id="pixels" name="pixels" type="hidden" />
+    <input id="letter" name="letter" type="hidden" value="{{ letter }}" />
+    <div class="button-group">
+      <button type="button" class="button check-button" onclick="practiceAction()">Check My Answer</button>
+      <button type="button" class="button clear-button" onclick="resetCanvas()">Clear</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  $(document).ready(function() {
+    startCanvas();
+  });
+</script>
+
+<style>
+  body {
+    padding: 6rem;
+    margin: 0;
+    font-family: 'Baloo 2', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main-container {
+    width:100%;
+    max-width: 90%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  .header {
+    margin-bottom: 1.5rem;
+  }
+
+  .back-button {
+    display: inline-block;
+    font-size: 1rem;
+    color: #FF6F61;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+
+  .game-title {
+    font-size: 2rem;
+    color: #FF6F61;
+    margin: 0;
+  }
+
+  /* .canvas-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  } */
+
+  #canvas {
+    border: 3px dashed #FFA6A9;
+    border-radius: 10px;
+  }
+
+  .feedback-container {
+    margin: 1rem 0;
+  }
+
+  .feedback-message {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+
+  .feedback-message.correct {
+    color: #28A745;
+  }
+
+  .feedback-message.incorrect {
+    color: #DC3545;
+  }
+
+  .instruction {
+    font-size: 1.2rem;
+    color: #333;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-weight: bold;
+  }
+
+  .check-button {
+    background: linear-gradient(135deg, #28A745, #73C476);
+    color: #fff;
+  }
+
+  .clear-button {
+    background: linear-gradient(135deg, #FF6F61, #FFA6A9);
+    color: #fff;
+  }
+
+  .button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .button:active {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 600px) {
+    .main-container {
+      padding: 15px;
+    }
+
+    .game-title {
+      font-size: 1.5rem;
+    }
+
+    .button {
+      font-size: 0.9rem;
+      padding: 8px 15px;
+    }
+
+  
+  }
+</style>
 
 {% endblock %}

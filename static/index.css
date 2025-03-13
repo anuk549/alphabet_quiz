@@ -1,7 +1,6 @@
 html {
-    background-color: rgb(231, 231, 231);
-    font-family: sans-serif;
-    padding: 1rem;
+    background: linear-gradient(140deg, #FFEE93, #FFA45B);
+    font-family: 'Baloo 2', cursive;
 
 }
 
